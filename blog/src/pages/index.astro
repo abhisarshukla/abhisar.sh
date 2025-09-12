@@ -1,28 +1,28 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BlogList from "../components/BlogList.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-      <h1>Hello, There! 👋</h1>
-      <p>Welcome to my personal website. I'm a software engineer and a web developer. I love building things.</p>
-      <p>[Tech, Thoughts].into_iter()</p>
-		</main>
-		<Footer />
-	</body>
-</html>
-
-<style>
-	main {
-    height: 80vh;
-	}
-</style>
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<section class="border-l-4 border-rose-400 pl-3 mt-2">
+		<h2 class="text-2xl font-medium text-zinc-800">
+			Ramblings are my own!
+		</h2>
+		<p class="font-extralight">Fermented to perfection.</p>
+	</section>
+	<section>
+		<h2 class="text-zinc-800 text-2xl font-bold">About me</h2>
+		<p class="text-zinc-800 font-light">
+			I am a software developer based in India. I enjoy building web
+			applications, exploring new technologies, and sharing my learnings
+			through this blog. Stay tuned for posts on programming, software
+			architecture, and personal projects!
+		</p>
+	</section>
+	<section>
+		<BlogList />
+	</section>
+</MainLayout>
