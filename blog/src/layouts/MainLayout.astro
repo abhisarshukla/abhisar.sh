@@ -24,7 +24,7 @@ const { title, description } = Astro.props;
         <StaticNoise opacity={0.1} />
         <GridPattern />
         <slot name="header" />
-        <main class="flex-1 p-3">
+        <main class="flex-1 p-3 md:w-7xl mx-auto">
             <slot />
         </main>
         <Footer />

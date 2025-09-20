@@ -22,14 +22,17 @@ const gradientParams = generateBlogGradient(blog, content);
     button?.addEventListener("click", () => window.history.back());
 </script>
 
-<header class="relative flex flex-col py-12 px-6 h-fit min-h-[220px]">
+<header
+    class="relative flex flex-col py-16 px-6 md:py-24 md:px-12 h-fit min-h-[300px] md:min-h-[400px]"
+>
     <Button
-        className="absolute top-2 left-4 z-1 flex items-center"
+        className="absolute top-4 left-6 md:top-8 md:left-12 z-10 flex items-center gap-2 text-sm md:text-base"
         data-blog-back-button
     >
-        <ArrowBigLeft />
+        <ArrowBigLeft size={20} />
         Go back
     </Button>
+
     <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <StaticMeshGradient
             height={gradientParams.height}
@@ -49,26 +52,34 @@ const gradientParams = generateBlogGradient(blog, content);
             client:load
         />
     </div>
-    <h1 class="text-4xl md:text-7xl font-bold text-zinc-100 z-1">
-        {title}
-    </h1>
-    <h3 class="flex-1 md:text-3xl font-semibold text-stone-100 mb-4 z-1">
-        {description}
-    </h3>
-    <span class="text-stone-200 justify-self-end z-1">
-        <span>
-            <FormattedDate date={pubDate} />
-        </span>
 
-        <span>
+    <div class="flex flex-col flex-1 max-w-7xl mx-auto w-full z-10">
+        <h1
+            class="text-4xl md:text-7xl font-bold text-zinc-100 leading-tight mb-6 md:mb-8"
+        >
+            {title}
+        </h1>
+        <h3
+            class="text-lg md:text-3xl font-medium text-stone-100 mb-8 md:mb-12 leading-relaxed max-w-4xl"
+        >
+            {description}
+        </h3>
+        <div
+            class="text-stone-200 text-sm md:text-base flex flex-wrap items-center gap-2 md:gap-4"
+        >
+            <span class="flex items-center">
+                <FormattedDate date={pubDate} />
+            </span>
             {
                 updatedDate && (
-                    <>
-                        &bull; Last updated on{" "}
-                        <FormattedDate date={updatedDate} />
-                    </>
+                    <span class="flex items-center">
+                        <span class="mx-2 text-stone-400">&bull;</span>
+                        <span>
+                            Last updated on <FormattedDate date={updatedDate} />
+                        </span>
+                    </span>
                 )
             }
-        </span>
-    </span>
+        </div>
+    </div>
 </header>

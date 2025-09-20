@@ -1,26 +1,75 @@
 ---
 import { SITE_TITLE } from "../consts";
 import { Dithering } from "@paper-design/shaders-react";
+
+const mobileProps = {
+	height: 220,
+	colorBack: "#301c2a00",
+	colorFront: "#56ae6c",
+	shape: "swirl" as const,
+	type: "4x4" as const,
+	pxSize: 2,
+	offsetX: 0,
+	offsetY: 0,
+	scale: 1.2,
+	rotation: 0,
+	speed: 0.8,
+};
+
+const desktopProps = {
+	height: 440,
+	colorBack: "#301c2a00",
+	colorFront: "#56ae6c",
+	shape: "swirl" as const,
+	type: "8x8" as const,
+	pxSize: 2.5,
+	offsetX: 0,
+	offsetY: 0,
+	scale: 2.5,
+	rotation: 0,
+	speed: 0.3,
+};
 ---
 
 <header
-	class="relative py-12 px-6 flex items-center justify-center min-h-[220px]"
+	class="relative py-12 px-6 flex items-center justify-center min-h-[220px] md:min-h-[440px]"
 >
 	<div class="absolute inset-0 pointer-events-none overflow-hidden">
-		<Dithering
-			height={500}
-			colorBack="#301c2a00"
-			colorFront="#56ae6c"
-			shape="swirl"
-			type="8x8"
-			pxSize={1.5}
-			offsetX={0}
-			offsetY={-0.3}
-			scale={1}
-			rotation={0}
-			speed={1}
-			client:load
-		/>
+		<!-- Mobile Dithering (hidden on desktop) -->
+		<div class="block md:hidden">
+			<Dithering
+				height={mobileProps.height}
+				colorBack={mobileProps.colorBack}
+				colorFront={mobileProps.colorFront}
+				shape={mobileProps.shape}
+				type={mobileProps.type}
+				pxSize={mobileProps.pxSize}
+				offsetX={mobileProps.offsetX}
+				offsetY={mobileProps.offsetY}
+				scale={mobileProps.scale}
+				rotation={mobileProps.rotation}
+				speed={mobileProps.speed}
+				client:load
+			/>
+		</div>
+
+		<!-- Desktop Dithering (hidden on mobile) -->
+		<div class="hidden md:block">
+			<Dithering
+				height={desktopProps.height}
+				colorBack={desktopProps.colorBack}
+				colorFront={desktopProps.colorFront}
+				shape={desktopProps.shape}
+				type={desktopProps.type}
+				pxSize={desktopProps.pxSize}
+				offsetX={desktopProps.offsetX}
+				offsetY={desktopProps.offsetY}
+				scale={desktopProps.scale}
+				rotation={desktopProps.rotation}
+				speed={desktopProps.speed}
+				client:load
+			/>
+		</div>
 	</div>
 	<h1
 		class="relative text-5xl md:text-7xl font-bold text-white z-10 text-center"
