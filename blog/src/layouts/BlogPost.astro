@@ -7,6 +7,8 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<article class="mt-4 font-light text-zinc-100 prose prose-invert prose-zinc">
+<article
+	class="mt-4 font-light text-zinc-100 min-w-full prose prose-invert prose-zinc"
+>
 	<slot />
 </article>
