@@ -7,32 +7,6 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<article class="mt-4">
-	<div class="flex flex-col gap-2">
-		<div class="flex flex-col md:flex-row md:justify-between">
-			<h1 class="font-bold text-3xl text-zinc-800 md:text-4xl">
-				{title}
-			</h1>
-			<span class="text-[0.8rem] flex items-center gap-1">
-				<span>
-					<FormattedDate date={pubDate} />
-				</span>
-
-				<span>
-					{
-						updatedDate && (
-							<>
-								&bull; Last updated on{" "}
-								<FormattedDate date={updatedDate} />
-							</>
-						)
-					}
-				</span>
-			</span>
-		</div>
-		<hr />
-		<div class="font-light">
-			<slot />
-		</div>
-	</div>
+<article class="mt-4 font-light text-zinc-100 prose prose-invert prose-zinc">
+	<slot />
 </article>

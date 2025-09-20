@@ -1,0 +1,74 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+import { StaticMeshGradient } from "@paper-design/shaders-react";
+import { generateBlogGradient } from "../utils.ts";
+import { ArrowBigLeft } from "@lucide/astro";
+import Button from "./Button.astro";
+
+export type Props = CollectionEntry<"blog"> & {
+    content?: string;
+};
+
+const { content, ...blog } = Astro.props;
+const { title, description, pubDate, updatedDate } = blog.data;
+
+// Generate dynamic gradient parameters based on blog content
+const gradientParams = generateBlogGradient(blog, content);
+---
+
+<script>
+    const button = document.querySelector("[data-blog-back-button]");
+    button?.addEventListener("click", () => window.history.back());
+</script>
+
+<header class="relative flex flex-col py-12 px-6 h-fit min-h-[220px]">
+    <Button
+        className="absolute top-2 left-4 z-1 flex items-center"
+        data-blog-back-button
+    >
+        <ArrowBigLeft />
+        Go back
+    </Button>
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <StaticMeshGradient
+            height={gradientParams.height}
+            colors={gradientParams.colors}
+            positions={gradientParams.positions}
+            waveX={gradientParams.waveX}
+            waveXShift={gradientParams.waveXShift}
+            waveY={gradientParams.waveY}
+            waveYShift={gradientParams.waveYShift}
+            mixing={gradientParams.mixing}
+            grainMixer={gradientParams.grainMixer}
+            grainOverlay={gradientParams.grainOverlay}
+            offsetX={gradientParams.offsetX}
+            offsetY={gradientParams.offsetY}
+            scale={gradientParams.scale}
+            rotation={gradientParams.rotation}
+            client:load
+        />
+    </div>
+    <h1 class="text-4xl md:text-7xl font-bold text-zinc-100 z-1">
+        {title}
+    </h1>
+    <h3 class="flex-1 md:text-3xl font-semibold text-stone-100 mb-4 z-1">
+        {description}
+    </h3>
+    <span class="text-stone-200 justify-self-end z-1">
+        <span>
+            <FormattedDate date={pubDate} />
+        </span>
+
+        <span>
+            {
+                updatedDate && (
+                    <>
+                        &bull; Last updated on{" "}
+                        <FormattedDate date={updatedDate} />
+                    </>
+                )
+            }
+        </span>
+    </span>
+</header>

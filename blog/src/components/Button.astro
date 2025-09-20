@@ -1,0 +1,30 @@
+---
+import { cn } from "../utils";
+
+interface Props {
+    children?: any;
+    className?: string;
+    hoverOnly?: boolean;
+    [key: string]: any; // For additional button attributes
+}
+
+const { children, className, hoverOnly, ...props } = Astro.props;
+---
+
+<button
+    class={cn(
+        "relative before:content-[''] before:transform-gpu px-2 py-1 text-zinc-500 transition-colors before:absolute before:top-0 before:left-0 before:w-full hover:text-zinc-400 active:text-zinc-500/80 active:before:border-neutral-400/30",
+        // Before
+        hoverOnly
+            ? "before:scale-0 before:opacity-0 hover:before:scale-100 hover:before:opacity-100"
+            : "before:scale-100 before:opacity-100 hover:before:bg-neutral-600/40",
+        "before:-z-10 before:h-full before:rounded-md before:border before:border-neutral-400/15 before:bg-neutral-600/20 before:transition before:duration-200 before:ease-out active:before:bg-neutral-600/30 dark:before:border-neutral-500/20",
+        // Dark mode
+        "dark:text-zinc-300 dark:active:text-zinc-300/80 dark:hover:text-zinc-200",
+        className,
+    )}
+    type="button"
+    {...props}
+>
+    <slot />
+</button>

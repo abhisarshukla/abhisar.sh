@@ -1,0 +1,105 @@
+---
+export interface Props {
+    title: string;
+    description?: string;
+    circleSize?: number;
+    class?: string;
+    size?: "sm" | "md" | "lg";
+    footer?: string;
+}
+
+const {
+    title,
+    description,
+    circleSize = 400,
+    class: className,
+    size = "md",
+    footer,
+} = Astro.props;
+---
+
+<div
+    class="gradient-card group relative transform-gpu overflow-hidden rounded-[20px] bg-white/10 p-2 transition-transform hover:scale-[1.01] active:scale-90"
+>
+    <div
+        class="gradient-circle -translate-x-1/2 -translate-y-1/2 absolute transform-gpu rounded-full transition-transform duration-500 group-hover:scale-[3] opacity-0"
+        style={{
+            maskImage: `radial-gradient(${circleSize / 2}px circle at center, white, transparent)`,
+            width: `${circleSize}px`,
+            height: `${circleSize}px`,
+            background:
+                "linear-gradient(135deg, #3BC4F2, #7A69F9,#F26378,#F5833F)",
+        }}
+    >
+    </div>
+    <div
+        class="absolute inset-px rounded-[19px] bg-neutral-100/80 dark:bg-neutral-900/80"
+    >
+    </div>
+    <slot />
+    <div class="relative px-4 pt-4 pb-2">
+        <h3
+            class="font-semibold text-lg text-neutral-800 dark:text-neutral-300"
+        >
+            {title}
+        </h3>
+        {
+            description && (
+                <p class="mt-2 text-neutral-600 dark:text-neutral-400">
+                    {description}
+                </p>
+            )
+        }
+    </div>
+    {
+        (footer || Astro.slots.has("footer")) && (
+            <div class="relative px-4 pb-4 pt-2 border-t border-neutral-200 dark:border-neutral-700">
+                {footer && (
+                    <div class="text-sm text-neutral-500 dark:text-neutral-400">
+                        {footer}
+                    </div>
+                )}
+                <slot name="footer" />
+            </div>
+        )
+    }
+</div>
+
+<script is:inline>
+    // Mouse tracking functionality
+    function initGradientCard() {
+        const cards = document.querySelectorAll(".gradient-card");
+
+        cards.forEach((card) => {
+            const circle = card.querySelector(".gradient-circle");
+
+            card.addEventListener("mousemove", (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                if (circle) {
+                    circle.style.left = `${x}px`;
+                    circle.style.top = `${y}px`;
+                    circle.style.opacity = "1";
+                }
+            });
+
+            card.addEventListener("mouseleave", () => {
+                if (circle) {
+                    circle.style.opacity = "0";
+                }
+            });
+        });
+    }
+
+    // Initialize on page load
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initGradientCard);
+    } else {
+        initGradientCard();
+    }
+
+    // Re-initialize for dynamic content (useful for client-side navigation)
+    document.addEventListener("astro:page-load", initGradientCard);
+</script>

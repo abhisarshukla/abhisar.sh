@@ -1,8 +1,9 @@
 ---
 import "../styles/global.css";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BaseHead from "../components/BaseHead.astro";
+import GridPattern from "../components/effects/GridPattern.astro";
+import StaticNoise from "../components/effects/StaticNoise.astro";
 
 interface Props {
     title: string;
@@ -18,10 +19,12 @@ const { title, description } = Astro.props;
         <BaseHead title={title} description={description} />
     </head>
     <body
-        class="flex flex-col max-w-full h-svh p-3 bg-neutral-10 md:max-w-3xl md:mx-auto"
+        class="relative flex flex-col h-full w-full min-h-svh min-w-svw bg-gradient-to-b from-neutral-900 via-neutral-900 to-neutral-700"
     >
-        <Header />
-        <main class="flex-1 flex flex-col gap-2 md:gap-4">
+        <StaticNoise opacity={0.1} />
+        <GridPattern />
+        <slot name="header" />
+        <main class="flex-1 p-3">
             <slot />
         </main>
         <Footer />

@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+import GradientCard from "./effects/GradientCard.astro";
+
+export type Props = CollectionEntry<"blog">;
+
+const {
+    id,
+    data: { title, description, pubDate },
+} = Astro.props;
+
+const pubDateString = pubDate.toLocaleDateString("en-us", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+});
+---
+
+<div class="relative text-zinc-100">
+    <a
+        class="absolute inset-0 h-full w-full"
+        href={`/blog/${id}`}
+        aria-label={title}></a>
+    <div class="pointer-events-none">
+        <GradientCard
+            title={title}
+            description={description}
+            footer={pubDateString}
+        />
+    </div>
+</div>

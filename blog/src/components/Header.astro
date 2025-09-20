@@ -1,11 +1,30 @@
 ---
 import { SITE_TITLE } from "../consts";
+import { Dithering } from "@paper-design/shaders-react";
 ---
 
-<header class="pb-1 border-b-2 border-gray-500 text-zinc-800">
-	<nav>
-		<h2 class="text-3xl italic font-mono md:text-4xl">
-			<a href="/">{SITE_TITLE}/~</a>
-		</h2>
-	</nav>
+<header
+	class="relative py-12 px-6 flex items-center justify-center min-h-[220px]"
+>
+	<div class="absolute inset-0 pointer-events-none overflow-hidden">
+		<Dithering
+			height={500}
+			colorBack="#301c2a00"
+			colorFront="#56ae6c"
+			shape="swirl"
+			type="8x8"
+			pxSize={1.5}
+			offsetX={0}
+			offsetY={-0.3}
+			scale={1}
+			rotation={0}
+			speed={1}
+			client:load
+		/>
+	</div>
+	<h1
+		class="relative text-5xl md:text-7xl font-bold text-white z-10 text-center"
+	>
+		{SITE_TITLE}_
+	</h1>
 </header>
