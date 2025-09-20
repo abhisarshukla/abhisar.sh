@@ -6,6 +6,7 @@
 
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
+@plugin 'tailwindcss-motion';
 
 @font-face {
   font-family: "BespokeSans";

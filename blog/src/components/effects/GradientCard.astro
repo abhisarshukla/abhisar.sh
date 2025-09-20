@@ -4,8 +4,8 @@ export interface Props {
     description?: string;
     circleSize?: number;
     class?: string;
-    size?: "sm" | "md" | "lg";
     footer?: string;
+    href?: string;
 }
 
 const {
@@ -13,7 +13,7 @@ const {
     description,
     circleSize = 400,
     class: className,
-    size = "md",
+    href,
     footer,
 } = Astro.props;
 ---
@@ -21,6 +21,16 @@ const {
 <div
     class="gradient-card group relative transform-gpu overflow-hidden rounded-[20px] bg-white/10 p-2 transition-transform hover:scale-[1.01] active:scale-90"
 >
+    {
+        href && (
+            <a
+                class="absolute inset-0 h-full w-full z-10 pointer-events-auto"
+                href={href}
+                aria-label={title}
+            />
+        )
+    }
+
     <div
         class="gradient-circle -translate-x-1/2 -translate-y-1/2 absolute transform-gpu rounded-full transition-transform duration-500 group-hover:scale-[3] opacity-0"
         style={{

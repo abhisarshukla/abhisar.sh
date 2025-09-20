@@ -17,16 +17,9 @@ const pubDateString = pubDate.toLocaleDateString("en-us", {
 });
 ---
 
-<div class="relative text-zinc-100">
-    <a
-        class="absolute inset-0 h-full w-full"
-        href={`/blog/${id}`}
-        aria-label={title}></a>
-    <div class="pointer-events-none">
-        <GradientCard
-            title={title}
-            description={description}
-            footer={pubDateString}
-        />
-    </div>
-</div>
+<GradientCard
+    title={title}
+    description={description}
+    footer={pubDateString}
+    href={`/blog/${id}`}
+/>
