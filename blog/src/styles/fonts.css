@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Google Sans';
+    src: url('/fonts/GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: 'Google Sans';
+    src: url('/fonts/GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf') format('truetype');
+    font-style: italic;
+    font-display: swap;
+    font-weight: 100 900;
+}
+
+@font-face {
+    font-family: 'Baskervville';
+    src: url('/fonts/Baskervville-VariableFont_wght.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400 700;
+}
+
+@font-face {
+    font-family: 'Baskervville';
+    src: url('/fonts/Baskervville-Italic-VariableFont_wght.ttf') format('truetype');
+    font-style: italic;
+    font-display: swap;
+    font-weight: 400 700;
+}
+
+@font-face {
+    font-family: 'Monaspace Neon';
+    src: url('/fonts/Monaspace Neon Var.ttf') format('truetype');
+    font-weight: 200 800;
+    font-style: normal;
+    font-display: swap;
+}

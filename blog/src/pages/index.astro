@@ -1,23 +1,9 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import BlogList from "../components/BlogList.astro";
-import Header from "../components/Header.astro";
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<Header slot="header" />
-	<div class="flex flex-col gap-5">
-		<section>
-			<p class="text-zinc-100">
-				I am a software developer based in India. I enjoy building web
-				applications, exploring new technologies, and sharing my
-				learnings through this blog. Stay tuned for posts on
-				programming, software architecture, and personal projects!
-			</p>
-		</section>
-		<section>
-			<BlogList />
-		</section>
-	</div>
-</MainLayout>
+<Layout>
+</Layout>
