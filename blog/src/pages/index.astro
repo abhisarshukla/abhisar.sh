@@ -3,13 +3,15 @@ import MainLayout from "../layouts/MainLayout.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import BlogList from "../components/BlogList.astro";
 import Header from "../components/Header.astro";
+import HeroShader from "../components/HeroShader";
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<Header slot="header" />
 	<div class="flex flex-col gap-10">
-		<section class="pb-10 border-b border-white/[0.06]">
-			<p class="text-[15px] font-light text-[#c2bdb6] leading-relaxed">
+		<section class="relative overflow-hidden pb-10 border-b border-white/[0.06]">
+			<HeroShader client:load />
+			<p class="relative z-10 text-[15px] font-light text-[#c2bdb6] leading-relaxed">
 				I am a software developer based in India. I enjoy building web
 				applications, exploring new technologies, and sharing my
 				learnings through this blog. Stay tuned for posts on
