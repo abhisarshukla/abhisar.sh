@@ -22,7 +22,7 @@ const Tag = href ? 'a' : 'div';
 
 <Tag
     href={href}
-    class="gradient-card group relative transform-gpu overflow-hidden rounded-[14px] bg-white/[0.05] border border-white/[0.07] p-2 transition-all hover:border-white/[0.14] hover:bg-white/[0.07] active:scale-[0.98] block no-underline"
+    class="gradient-card group relative transform-gpu overflow-hidden rounded-[14px] bg-rim-2 border border-rim-4 p-2 transition-all hover:border-rim-7 hover:bg-rim-4 active:scale-[0.98] block no-underline"
 >
     <div
         class="gradient-circle -translate-x-1/2 -translate-y-1/2 absolute transform-gpu rounded-full transition-transform duration-500 group-hover:scale-[3] opacity-0"
@@ -31,22 +31,22 @@ const Tag = href ? 'a' : 'div';
             width: `${circleSize}px`,
             height: `${circleSize}px`,
             background:
-                "linear-gradient(135deg, #3BC4F2, #7A69F9,#F26378,#F5833F)",
+                "linear-gradient(135deg, var(--color-accent-dark), var(--color-accent), var(--color-accent-light), var(--color-accent-mid))",
         }}
     >
     </div>
     <div
-        class="absolute inset-px rounded-[13px] bg-[#131211]/80"
+        class="absolute inset-px rounded-[13px] bg-base/80"
     >
     </div>
     <slot />
     <div class="relative px-4 pt-4 pb-2">
-        <h3 class="font-medium text-base text-[#e8e4de] leading-snug tracking-[-0.01em]">
+        <h3 class="font-medium text-base text-ink-2 leading-snug tracking-[-0.01em]">
             {title}
         </h3>
         {
             description && (
-                <p class="mt-1.5 text-[13px] font-light text-[#7a7672] leading-[1.6]">
+                <p class="mt-1.5 text-[13px] font-light text-ink-5 leading-[1.6]">
                     {description}
                 </p>
             )
@@ -54,9 +54,9 @@ const Tag = href ? 'a' : 'div';
     </div>
     {
         (footer || Astro.slots.has("footer")) && (
-            <div class="relative px-4 pb-4 pt-2 border-t border-white/[0.06]">
+            <div class="relative px-4 pb-4 pt-2 border-t border-rim-3">
                 {footer && (
-                    <div class="font-mono text-[11px] text-[#635f5c] tracking-[0.03em]">
+                    <div class="font-mono text-[11px] text-ink-7 tracking-[0.03em]">
                         {footer}
                     </div>
                 )}

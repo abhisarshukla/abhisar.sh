@@ -8,13 +8,13 @@ const { category, items } = Astro.props;
 ---
 
 <div class="flex flex-col gap-2">
-    <span class="font-mono text-[10px] text-[#4e4b48] tracking-[0.08em] uppercase">
+    <span class="font-mono text-[10px] text-ink-8 tracking-[0.08em] uppercase">
         {category}
     </span>
     <div class="flex flex-wrap gap-2">
         {
             items.map((item) => (
-                <span class="font-mono text-xs text-[#8a8580] bg-white/[0.05] border border-white/[0.08] rounded-md px-2.5 py-1">
+                <span class="font-mono text-xs text-ink-4 bg-rim-2 border border-rim-5 rounded-md px-2.5 py-1">
                     {item}
                 </span>
             ))

@@ -9,10 +9,10 @@ const { label, href, value } = Astro.props;
 ---
 
 <div class="flex items-center justify-between py-3">
-    <span class="text-sm text-[#c2bdb6]">{label}</span>
+    <span class="text-sm text-ink-3">{label}</span>
     <a
         href={href}
-        class="font-mono text-xs text-[#4e4b48] hover:text-[#8a8580] transition-colors"
+        class="font-mono text-xs text-ink-8 hover:text-accent transition-colors"
     >
         {value}
     </a>

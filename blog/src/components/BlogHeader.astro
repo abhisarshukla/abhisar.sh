@@ -13,22 +13,22 @@ const wordCount = content ? content.split(/\s+/).filter(Boolean).length : 0;
 const readTime = Math.max(1, Math.round(wordCount / 200));
 ---
 
-<div class="pb-10 border-b border-white/[0.06] flex flex-col gap-3">
+<div class="pb-10 border-b border-rim-3 flex flex-col gap-3">
     <div class="flex items-center gap-2">
-        <span class="font-mono text-[11px] text-[#4e4b48] tracking-[0.04em]">
+        <span class="font-mono text-[11px] text-ink-8 tracking-[0.04em]">
             <FormattedDate date={pubDate} />
         </span>
-        <span class="text-[#2e2c2a] text-[11px]">·</span>
-        <span class="font-mono text-[11px] text-[#4e4b48] tracking-[0.04em]">
+        <span class="text-ink-9 text-[11px]">·</span>
+        <span class="font-mono text-[11px] text-ink-8 tracking-[0.04em]">
             {readTime} min read
         </span>
     </div>
-    <h1 class="text-3xl font-semibold text-[#f0ece5] tracking-tight leading-snug">
+    <h1 class="text-3xl font-semibold text-ink-1 tracking-tight leading-snug">
         {title}
     </h1>
     {
         description && (
-            <p class="text-sm font-light text-[#7a7672] leading-relaxed">
+            <p class="text-sm font-light text-ink-5 leading-relaxed">
                 {description}
             </p>
         )

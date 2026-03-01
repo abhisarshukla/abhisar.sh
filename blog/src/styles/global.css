@@ -11,6 +11,35 @@
 @theme {
   --font-sans: 'Geist', sans-serif;
   --font-mono: 'Geist Mono', monospace;
+
+  /* Base */
+  --color-base: #131211;
+
+  /* Ink — warm neutral scale, lightest to darkest */
+  --color-ink-1: #f0ece5;  /* primary headings */
+  --color-ink-2: #e8e4de;  /* secondary headings, site title */
+  --color-ink-3: #c2bdb6;  /* body text */
+  --color-ink-4: #8a8580;  /* muted (code, secondary) */
+  --color-ink-5: #7a7672;  /* faint (descriptions, blockquote) */
+  --color-ink-6: #6b6762;  /* dim (nav links) */
+  --color-ink-7: #635f5c;  /* subtle (dates, hamburger) */
+  --color-ink-8: #4e4b48;  /* ghost (labels, footer) */
+  --color-ink-9: #2e2c2a;  /* void (separators) */
+
+  /* Accent — steel blue */
+  --color-accent:       #6b8fa3;
+  --color-accent-light: #8fb5cc;
+  --color-accent-mid:   #4a8ba8;
+  --color-accent-dark:  #2d6a8a;
+
+  /* Rim — semi-transparent white overlays */
+  --color-rim-1: rgb(255 255 255 / 0.04);  /* code pre bg */
+  --color-rim-2: rgb(255 255 255 / 0.05);  /* card / pill bg */
+  --color-rim-3: rgb(255 255 255 / 0.06);  /* subtle borders, dividers */
+  --color-rim-4: rgb(255 255 255 / 0.07);  /* nav / card borders */
+  --color-rim-5: rgb(255 255 255 / 0.08);  /* code / pill borders */
+  --color-rim-6: rgb(255 255 255 / 0.12);  /* blockquote, gradient circle */
+  --color-rim-7: rgb(255 255 255 / 0.14);  /* card hover border */
 }
 
 body {
