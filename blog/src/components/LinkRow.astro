@@ -1,0 +1,19 @@
+---
+interface Props {
+    label: string;
+    href: string;
+    value: string;
+}
+
+const { label, href, value } = Astro.props;
+---
+
+<div class="flex items-center justify-between py-3">
+    <span class="text-sm text-[#c2bdb6]">{label}</span>
+    <a
+        href={href}
+        class="font-mono text-xs text-[#4e4b48] hover:text-[#8a8580] transition-colors"
+    >
+        {value}
+    </a>
+</div>

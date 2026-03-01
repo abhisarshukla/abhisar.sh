@@ -1,19 +1,22 @@
 ---
 import { getCollection } from "astro:content";
-import FormattedDate from "./FormattedDate.astro";
 import BlogItem from "./BlogItem.astro";
+import SectionLabel from "./SectionLabel.astro";
 
 const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
-<ul class="flex flex-col gap-3">
-    {
-        posts.map((post) => (
-            <li>
-                <BlogItem {...post} />
-            </li>
-        ))
-    }
-</ul>
+<div class="flex flex-col gap-3">
+    <SectionLabel label="Writing" />
+    <ul class="flex flex-col gap-2.5">
+        {
+            posts.map((post) => (
+                <li>
+                    <BlogItem {...post} />
+                </li>
+            ))
+        }
+    </ul>
+</div>

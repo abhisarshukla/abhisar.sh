@@ -8,88 +8,13 @@
 @plugin '@tailwindcss/typography';
 @plugin 'tailwindcss-motion';
 
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-Light.woff") format("woff");
-  font-weight: 300;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-LightItalic.woff") format("woff");
-  font-weight: 300;
-  font-display: swap;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-Regular.woff") format("woff");
-  font-weight: 400;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-Italic.woff") format("woff");
-  font-weight: 400;
-  font-display: swap;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-Medium.woff") format("woff");
-  font-weight: 500;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-MediumItalic.woff") format("woff");
-  font-weight: 500;
-  font-display: swap;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-Bold.woff") format("woff");
-  font-weight: 700;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-BoldItalic.woff") format("woff");
-  font-weight: 700;
-  font-display: swap;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-Extrabold.woff") format("woff");
-  font-weight: 800;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BespokeSans";
-  src: url("/fonts/BespokeSans-ExtraboldItalic.woff") format("woff");
-  font-weight: 800;
-  font-display: swap;
-  font-style: italic;
+@theme {
+  --font-sans: 'Geist', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
 }
 
 body {
-  font-family: "BespokeSans", sans-serif;
+  font-family: 'Geist', sans-serif;
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;

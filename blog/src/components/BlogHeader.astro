@@ -1,85 +1,36 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "./FormattedDate.astro";
-import { StaticMeshGradient } from "@paper-design/shaders-react";
-import { generateBlogGradient } from "../utils.ts";
-import { ArrowBigLeft } from "@lucide/astro";
-import Button from "./Button.astro";
 
 export type Props = CollectionEntry<"blog"> & {
     content?: string;
 };
 
 const { content, ...blog } = Astro.props;
-const { title, description, pubDate, updatedDate } = blog.data;
+const { title, description, pubDate } = blog.data;
 
-// Generate dynamic gradient parameters based on blog content
-const gradientParams = generateBlogGradient(blog, content);
+const wordCount = content ? content.split(/\s+/).filter(Boolean).length : 0;
+const readTime = Math.max(1, Math.round(wordCount / 200));
 ---
 
-<script>
-    const button = document.querySelector("[data-blog-back-button]");
-    button?.addEventListener("click", () => window.history.back());
-</script>
-
-<header
-    class="relative flex flex-col pt-16 pb-8 px-6 md:py-24 md:px-12 h-fit min-h-[220px] md:min-h-[440px]"
->
-    <Button
-        className="absolute top-4 left-6 md:top-8 md:left-12 z-10 flex items-center gap-2 text-sm md:text-base"
-        data-blog-back-button
-    >
-        <ArrowBigLeft size={20} />
-        Go back
-    </Button>
-
-    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <StaticMeshGradient
-            height={gradientParams.height}
-            colors={gradientParams.colors}
-            positions={gradientParams.positions}
-            waveX={gradientParams.waveX}
-            waveXShift={gradientParams.waveXShift}
-            waveY={gradientParams.waveY}
-            waveYShift={gradientParams.waveYShift}
-            mixing={gradientParams.mixing}
-            grainMixer={gradientParams.grainMixer}
-            grainOverlay={gradientParams.grainOverlay}
-            offsetX={gradientParams.offsetX}
-            offsetY={gradientParams.offsetY}
-            scale={gradientParams.scale}
-            rotation={gradientParams.rotation}
-            client:load
-        />
+<div class="pb-10 border-b border-white/[0.06] flex flex-col gap-3">
+    <div class="flex items-center gap-2">
+        <span class="font-mono text-[11px] text-[#4e4b48] tracking-[0.04em]">
+            <FormattedDate date={pubDate} />
+        </span>
+        <span class="text-[#2e2c2a] text-[11px]">·</span>
+        <span class="font-mono text-[11px] text-[#4e4b48] tracking-[0.04em]">
+            {readTime} min read
+        </span>
     </div>
-
-    <div class="flex flex-col flex-1 max-w-7xl mx-auto w-full z-10">
-        <h1
-            class="text-4xl md:text-7xl font-bold text-zinc-100 leading-tight mb-6 md:mb-8"
-        >
-            {title}
-        </h1>
-        <h3
-            class="text-lg md:text-3xl flex-1 font-medium text-stone-100 mb-8 md:mb-12 leading-relaxed max-w-4xl"
-        >
-            {description}
-        </h3>
-        <div
-            class="text-stone-200 text-sm md:text-base flex flex-wrap items-center gap-2 md:gap-4"
-        >
-            <span class="flex items-center">
-                <FormattedDate date={pubDate} />
-            </span>
-            {
-                updatedDate && (
-                    <span class="flex items-center">
-                        <span class="mx-2 text-stone-400">&bull;</span>
-                        <span>
-                            Last updated on <FormattedDate date={updatedDate} />
-                        </span>
-                    </span>
-                )
-            }
-        </div>
-    </div>
-</header>
+    <h1 class="text-3xl font-semibold text-[#f0ece5] tracking-tight leading-snug">
+        {title}
+    </h1>
+    {
+        description && (
+            <p class="text-sm font-light text-[#7a7672] leading-relaxed">
+                {description}
+            </p>
+        )
+    }
+</div>

@@ -1,0 +1,72 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import StackGroup from "../components/StackGroup.astro";
+import LinkRow from "../components/LinkRow.astro";
+
+const stack = [
+	{ category: "Frontend", items: ["ReactJS", "Solid.js", "HTML", "CSS", "Zustand", "React Query", "React Redux", "WebSockets"] },
+	{ category: "Backend", items: ["Node.js", "Adobe AEM"] },
+	{ category: "Languages", items: ["JavaScript", "TypeScript", "SCSS", "Java", "Go"] },
+	{ category: "Tooling", items: ["Vite", "Webpack", "Maven", "Vitest", "RSPack"] },
+];
+
+const links = [
+	{ label: "GitHub", href: "https://github.com/abhisarshukla", value: "@abhisarshukla" },
+	{ label: "LinkedIn", href: "https://linkedin.com/in/abhisar-shukla", value: "abhisar-shukla" },
+	{ label: "Email", href: "mailto:abhisarshukla645@gmail.com", value: "abhisarshukla645@gmail.com" },
+];
+---
+
+<MainLayout title="About — abhisar.sh" description="Software developer based in India.">
+	<Header slot="header" />
+	<div class="flex flex-col gap-10">
+
+		<section class="pb-10 border-b border-white/[0.06]">
+			<span class="font-mono text-[10px] font-medium text-[#4e4b48] tracking-[0.12em] uppercase">
+				About
+			</span>
+			<h1 class="text-3xl font-semibold text-[#f0ece5] mt-2 mb-1.5 tracking-tight leading-tight">
+				Abhisar Shukla
+			</h1>
+			<p class="text-sm text-[#635f5c]">Frontend Engineer · Gurgaon, India</p>
+		</section>
+
+		<section class="flex flex-col gap-4">
+			<p class="text-[15px] font-light text-[#c2bdb6] leading-relaxed">
+				Frontend engineer with 3+ years of experience building scalable,
+				high-performance web applications and AI-powered products. Currently
+				at Nugget by Zomato, where I work on AI assistants, bot builders,
+				and real-time streaming interfaces for customer support.
+			</p>
+			<p class="text-[15px] font-light text-[#c2bdb6] leading-relaxed">
+				Previously at Bajaj Finserv, where I delivered an industry-first
+				Solid.js + AEM integration that raised Core Web Vitals by 40 points,
+				and built cross-platform SSO and session management systems across
+				20+ user journeys.
+			</p>
+			<p class="text-[15px] font-light text-[#c2bdb6] leading-relaxed">
+				This blog is where I think out loud — writing about things I'm
+				building, problems I'm working through, and ideas worth sharing.
+			</p>
+		</section>
+
+		<section class="flex flex-col gap-5">
+			<SectionLabel label="Stack" />
+			{stack.map(({ category, items }) => (
+				<StackGroup category={category} items={items} />
+			))}
+		</section>
+
+		<section class="flex flex-col gap-4">
+			<SectionLabel label="Find me" />
+			<div class="flex flex-col divide-y divide-white/[0.05]">
+				{links.map(({ label, href, value }) => (
+					<LinkRow label={label} href={href} value={value} />
+				))}
+			</div>
+		</section>
+
+	</div>
+</MainLayout>
